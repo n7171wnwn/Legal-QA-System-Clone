@@ -1,0 +1,48 @@
+# IDE
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+*~
+
+# Maven
+backend/target/
+backend/.mvn/
+backend/mvnw
+backend/mvnw.cmd
+
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.vuepress/dist
+frontend/.nuxt
+frontend/.cache
+frontend/.temp
+frontend/.tmp
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/.env
+frontend/.env.local
+frontend/.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Uploads
+backend/uploads/
+frontend/uploads/
+
+# Database
+*.db
+*.sqlite
+
+# Config
+backend/src/main/resources/application-local.yml
+
