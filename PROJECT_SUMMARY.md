@@ -56,7 +56,6 @@
 - Spring Boot 2.7.14
 - Spring Data JPA
 - MySQL 8.0
-- Redis
 - JWT认证
 - DeepSeek API集成
 - OkHttp客户端
@@ -111,13 +110,10 @@
    mysql -u root -p legal_qa < backend/src/main/resources/db/migration/schema.sql
    ```
 
-2. **配置Redis**
-   - 启动Redis服务
-
-3. **配置DeepSeek API**
+2. **配置DeepSeek API**
    - 在 `application.yml` 中设置API Key
 
-4. **运行后端**
+3. **运行后端**
    ```bash
    cd backend
    mvn clean install
@@ -172,10 +168,10 @@
    - 实现报告导出功能
 
 2. **性能优化**
-   - 添加Redis缓存
    - 优化数据库查询
    - 实现分页加载
    - 添加CDN加速
+   - 添加缓存机制
 
 3. **安全增强**
    - 添加请求限流
@@ -195,8 +191,8 @@
 
 1. **后端启动失败**
    - 检查数据库连接配置
-   - 确认Redis服务运行
    - 检查端口占用
+   - 查看日志文件
 
 2. **前端无法连接后端**
    - 检查代理配置
