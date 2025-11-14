@@ -26,7 +26,7 @@ spring:
 deepseek:
   api:
     url: https://api.deepseek.com/v1/chat/completions
-    api-key: ${DEEPSEEK_API_KEY:your-api-key-here}
+    api-key: ${DEEPSEEK_API_KEY:sk-d75528854e8641dba0f96d8878b9c678}
     model: deepseek-chat
     timeout: 30000
 
