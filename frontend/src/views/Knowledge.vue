@@ -36,7 +36,7 @@
               <h3>{{ article.title }}</h3>
               <el-tag size="small">{{ article.lawType }}</el-tag>
             </div>
-            <p class="article-number">第{{ article.articleNumber }}条</p>
+            <p class="article-number" v-if="formatArticleNumber(article.articleNumber)">{{ formatArticleNumber(article.articleNumber) }}</p>
             <p class="article-content">{{ article.content }}</p>
             <div class="article-footer">
               <span class="article-org">{{ article.publishOrg }}</span>
@@ -113,10 +113,10 @@
     >
       <div v-if="selectedItem">
         <div v-if="activeTab === 'article'">
-          <h3>{{ selectedItem.title }} 第{{ selectedItem.articleNumber }}条</h3>
+          <h3>{{ selectedItem.title }}<span v-if="formatArticleNumber(selectedItem.articleNumber)"> {{ formatArticleNumber(selectedItem.articleNumber) }}</span></h3>
           <p>{{ selectedItem.content }}</p>
-          <p><strong>发布机构：</strong>{{ selectedItem.publishOrg }}</p>
-          <p><strong>发布日期：</strong>{{ formatDate(selectedItem.publishDate) }}</p>
+          <p><strong>发布机构：</strong>{{ selectedItem.publishOrg || '未知' }}</p>
+          <p><strong>发布日期：</strong>{{ formatDate(selectedItem.publishDate) || '未知' }}</p>
         </div>
         <div v-if="activeTab === 'case'">
           <h3>{{ selectedItem.title }}</h3>
@@ -259,6 +259,15 @@ export default {
     formatDate(date) {
       if (!date) return ''
       return new Date(date).toLocaleDateString()
+    },
+    formatArticleNumber(articleNumber) {
+      if (!articleNumber) return ''
+      // 如果已经包含"第"和"条"，直接返回
+      if (articleNumber.includes('第') && articleNumber.includes('条')) {
+        return articleNumber
+      }
+      // 否则添加"第"和"条"
+      return `第${articleNumber}条`
     }
   }
 }

@@ -63,7 +63,7 @@
               class="law-item"
               @click="showLawDetail(law)"
             >
-              {{ law.title }} 第{{ law.articleNumber }}条
+              {{ law.title }}<span v-if="formatArticleNumber(law.articleNumber)"> {{ formatArticleNumber(law.articleNumber) }}</span>
             </div>
           </div>
           <div v-else class="empty-state">暂无相关法条</div>
@@ -106,7 +106,7 @@
 
     <el-dialog title="法条详情" :visible.sync="lawDialogVisible" width="60%">
       <div v-if="selectedLaw">
-        <h3>{{ selectedLaw.title }} 第{{ selectedLaw.articleNumber }}条</h3>
+        <h3>{{ selectedLaw.title }}<span v-if="formatArticleNumber(selectedLaw.articleNumber)"> {{ formatArticleNumber(selectedLaw.articleNumber) }}</span></h3>
         <p>{{ selectedLaw.content }}</p>
       </div>
     </el-dialog>
@@ -258,6 +258,15 @@ export default {
     formatDate(date) {
       if (!date) return ''
       return new Date(date).toLocaleDateString()
+    },
+    formatArticleNumber(articleNumber) {
+      if (!articleNumber) return ''
+      // 如果已经包含"第"和"条"，直接返回
+      if (articleNumber.includes('第') && articleNumber.includes('条')) {
+        return articleNumber
+      }
+      // 否则添加"第"和"条"
+      return `第${articleNumber}条`
     },
     scrollToBottom() {
       const container = this.$refs.messagesContainer

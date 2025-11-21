@@ -214,6 +214,25 @@ npm run build
 2. 或直接导入数据到数据库
 3. 系统会自动索引新知识用于问答
 
+### 导入法律法规数据
+
+系统支持从 [LawRefBook/Laws](https://github.com/LawRefBook/Laws) 仓库批量导入法律法规数据。
+
+**快速开始**：
+
+```bash
+# Windows
+cd backend/scripts
+import_laws.bat
+
+# Linux/Mac
+cd backend/scripts
+chmod +x import_laws.sh
+./import_laws.sh
+```
+
+详细说明请参考：[导入指南](backend/scripts/IMPORT_GUIDE.md)
+
 ## 注意事项
 
 1. 确保 DeepSeek API Key 有效且有足够的调用额度
